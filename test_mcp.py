@@ -4,6 +4,7 @@ import argparse
 import asyncio
 from datetime import datetime, timezone, timedelta
 import json
+import os
 from pathlib import Path
 import time
 
@@ -18,7 +19,10 @@ async def run(launcher, report_path):
         records.append({"name": name, "passed": bool(passed), "details": details})
         print(f"{'PASS' if passed else 'FAIL'} {name}", flush=True)
 
-    parameters = StdioServerParameters(command="/bin/bash", args=[str(launcher)])
+    parameters = StdioServerParameters(
+        command="/bin/bash", args=[str(launcher)],
+        env={key: os.environ[key] for key in ("SAGE_EXECUTABLE", "SAGEMATH_MCP_PYTHON") if key in os.environ},
+    )
     async with stdio_client(parameters) as (reader, writer):
         async with ClientSession(reader, writer, read_timeout_seconds=timedelta(seconds=45)) as session:
             initialized = await session.initialize()
@@ -67,7 +71,13 @@ async def run(launcher, report_path):
             record("Output cap and truncation marker", capped.get("stdout_truncated") is True and len(capped.get("stdout", "").encode()) <= 80_000)
             result_cap = await call("Large result bounded", "'z'*30000", include_latex=False)
             record("Result cap and truncation marker", result_cap.get("result_truncated") is True and len(result_cap.get("result", "")) == 20_000)
-            for name, args in [("Empty code rejected", {"code":""}), ("Excessive timeout rejected", {"code":"1", "timeout_seconds":121}), ("Missing code rejected", {})]:
+            for name, args in [
+                ("Empty code rejected", {"code": ""}),
+                ("Oversized code rejected", {"code": "x" * 65_537}),
+                ("Too short timeout rejected", {"code": "1", "timeout_seconds": 0}),
+                ("Excessive timeout rejected", {"code": "1", "timeout_seconds": 121}),
+                ("Missing code rejected", {}),
+            ]:
                 response = await session.call_tool("sage_execute", args)
                 record(name, response.isError)
             response = await session.call_tool("not_a_tool", {})
