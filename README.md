@@ -76,4 +76,4 @@ The integration suite checks real calculations, Sage syntax, fresh state, errors
 
 The initial commit preserves a selected local project snapshot imported on 2026-10-29. The project was described as AI-assisted; its original Git history and installed plugin configuration were not imported. The prior machine-specific setup notes were replaced by this portable guide. No broader authorship or ownership conclusion can be drawn from this snapshot.
 
-No license grant is currently included. Before public release, the owner must confirm the provenance and rights to this code and choose a license. Dependencies retain their own licenses; they are not bundled in this repository.
+Licensed under the [MIT License](LICENSE) (SPDX: `MIT`). On 2026-10-29, the repository owner stated that all of the code was created by AI and explicitly authorized MIT licensing. This records the owner's assertion and choice; it is not an independent determination of copyright ownership or third-party provenance. Dependencies retain their own licenses; they are not bundled in this repository.

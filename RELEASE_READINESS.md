@@ -10,6 +10,7 @@ Repository visibility must stay private until the owner reviews the changes and 
 - Fixed the integration client to forward those overrides to its child server.
 - Added repeatable tests of the MCP interface and process safeguards without requiring a Sage installation.
 - Ignored generated integration reports, which can contain local paths and request contents.
+- Added the MIT license with explicit owner authorization, retaining dependency licensing boundaries.
 
 ## Verification evidence
 
@@ -35,7 +36,7 @@ All tracked source and documentation and all nine blobs reachable from the origi
 
 The original `README.source.md` and `launch.sh` contain personal absolute filesystem paths. Those paths are removed from the proposed tree, but remain visible in baseline commit `3b87818`. No history was rewritten. The owner must decide whether those historical paths are acceptable for public release or arrange an explicitly authorized history cleanup before changing visibility.
 
-The snapshot records that the project arose from AI-assisted work, but omits original development history. That evidence does not establish ownership or third-party provenance. No license was added. A possible owner-selected license for the adapter code is MIT, contingent on confirming rights to all included code and any necessary notices. This proposal does not apply a license or change dependency licensing.
+The snapshot records that the project arose from AI-assisted work, but omits original development history. On 2026-10-29, in response to the provenance and license question, the repository owner stated that all of the code was created by AI and explicitly authorized MIT licensing. The repository now includes the MIT license. This records the owner's assertion and authorization, not an independent legal determination of copyright ownership or third-party provenance. No existing third-party notices were removed; dependencies retain their own licenses.
 
 ## Release checklist
 
@@ -44,7 +45,7 @@ The snapshot records that the project arose from AI-assisted work, but omits ori
 - [x] Retain destructive/open-world MCP annotations for execution.
 - [x] Isolated dependency install and process/protocol tests.
 - [x] Review current files and imported history for privacy and provenance signals.
-- [ ] Owner confirms provenance/rights and chooses an appropriate license and notices.
+- [x] Record owner's AI-origin assertion and explicit MIT authorization; add LICENSE and consistent README metadata.
 - [ ] Owner accepts historical personal paths or separately authorizes their removal from history.
 - [ ] Run `test_mcp.py` against an actual supported Sage installation and inspect every result.
 - [ ] Verify the desired deployment platform and supported Python versions.
