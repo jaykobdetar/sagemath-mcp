@@ -1,0 +1,4 @@
+# FastMCP API is intentionally pinned to the tested official MCP SDK 1.x.
+mcp==1.27.2
+# Avoid newer settings introspection warnings in FastMCP 1.x.
+pydantic-settings==2.14.1
