@@ -24,7 +24,9 @@ Executed on Linux with Python 3.14.7 in an isolated virtual environment:
 | `bash -n launch.sh` | Passed |
 | Python compilation of server, worker, integration client, and tests | Passed |
 | `git diff --check` | Passed |
-| Real Sage integration suite (`test_mcp.py`) | Not run: SageMath unavailable in this execution environment |
+| Real Sage integration suite (`test_mcp.py`) | 38/38 checks passed against existing SageMath 10.7 on Linux |
+
+A follow-up on 2026-10-29 located an existing SageMath 10.7 executable in a standard local Conda environment (it was absent from PATH). The reviewed checkout's integration suite completed at 20:19:00 UTC with 38/38 checks passing. Execution used a 4 GiB per-process address-space limit, a 90-second per-process CPU limit, and a 180-second suite wall-time limit; calculation workers also retained their own request timeouts and single-thread settings. No Sage installation or environment modification was performed. The ignored local report `test-report-real-sage.json` contains full details and local paths; it is deliberately not committed.
 
 The restricted execution sandbox initially allowed 9 of the 10 tests but caused MCP initialization to time out. The unchanged suite passed outside that sandbox. The tests use a controlled fake Sage executable and temporary files; they verify transport and orchestration, not Sage mathematics or preparser behavior. Python versions other than 3.14 were not tested in this review.
 
@@ -47,7 +49,7 @@ The snapshot records that the project arose from AI-assisted work, but omits ori
 - [x] Review current files and imported history for privacy and provenance signals.
 - [x] Record owner's AI-origin assertion and explicit MIT authorization; add LICENSE and consistent README metadata.
 - [ ] Owner accepts historical personal paths or separately authorizes their removal from history.
-- [ ] Run `test_mcp.py` against an actual supported Sage installation and inspect every result.
+- [x] Run `test_mcp.py` against existing SageMath 10.7 and inspect every result: 38/38 passed.
 - [ ] Verify the desired deployment platform and supported Python versions.
 - [ ] Parent/owner reviews draft PR and explicitly authorizes public visibility.
 

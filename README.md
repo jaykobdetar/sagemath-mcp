@@ -4,7 +4,7 @@ A local stdio [Model Context Protocol](https://modelcontextprotocol.io/) server 
 
 ## Status
 
-This is a small experimental source distribution, not an official SageMath or MCP project. The MCP protocol and process safeguards have automated tests that do not require Sage. Real Sage calculations must be verified separately with `test_mcp.py` before release. See [RELEASE_READINESS.md](RELEASE_READINESS.md) for evidence and outstanding decisions.
+This is a small experimental source distribution, not an official SageMath or MCP project. The MCP protocol and process safeguards have automated tests that do not require Sage. The separate real-Sage suite passed all 38 checks against an existing SageMath 10.7 installation on Linux; other Sage versions and platforms remain unverified. See [RELEASE_READINESS.md](RELEASE_READINESS.md) for evidence and outstanding decisions.
 
 ## Setup
 
