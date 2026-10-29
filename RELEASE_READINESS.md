@@ -36,7 +36,7 @@ The tests cover missing/broken runtime errors, malformed/oversized/missing worke
 
 All tracked source and documentation and all nine blobs reachable from the original repository history were inspected. A targeted credential-pattern scan found no credential-like matches. No vendored third-party code, binary artifacts, raw conversations, personal documents, or license notices were present in the snapshot. Absence of matches does not establish that every possible secret or ownership issue has been excluded.
 
-The original `README.source.md` and `launch.sh` contain personal absolute filesystem paths. Those paths are removed from the proposed tree, but remain visible in baseline commit `3b87818`. No history was rewritten. The owner must decide whether those historical paths are acceptable for public release or arrange an explicitly authorized history cleanup before changing visibility.
+The original `README.source.md` and `launch.sh` contain personal absolute filesystem paths. Those paths are removed from the proposed tree, but remain visible in baseline commit `3b87818`. No history was rewritten. On 2026-10-29, the owner explicitly accepted public disclosure of the ordinary local username, filesystem paths, and author email in Git history. This historical-disclosure decision is resolved; history is retained.
 
 The snapshot records that the project arose from AI-assisted work, but omits original development history. On 2026-10-29, in response to the provenance and license question, the repository owner stated that all of the code was created by AI and explicitly authorized MIT licensing. The repository now includes the MIT license. This records the owner's assertion and authorization, not an independent legal determination of copyright ownership or third-party provenance. No existing third-party notices were removed; dependencies retain their own licenses.
 
@@ -48,7 +48,7 @@ The snapshot records that the project arose from AI-assisted work, but omits ori
 - [x] Isolated dependency install and process/protocol tests.
 - [x] Review current files and imported history for privacy and provenance signals.
 - [x] Record owner's AI-origin assertion and explicit MIT authorization; add LICENSE and consistent README metadata.
-- [ ] Owner accepts historical personal paths or separately authorizes their removal from history.
+- [x] Owner explicitly accepts historical personal paths and ordinary author metadata; retain history without rewriting.
 - [x] Run `test_mcp.py` against existing SageMath 10.7 and inspect every result: 38/38 passed.
 - [ ] Verify the desired deployment platform and supported Python versions.
 - [ ] Parent/owner reviews draft PR and explicitly authorizes public visibility.
